@@ -1,0 +1,46 @@
+{
+    "name": "Request",
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "descripcion",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "created",
+            "fieldType": "ZonedDateTime"
+        },
+        {
+            "fieldName": "priority",
+            "fieldType": "Priority",
+            "fieldValues": "High,Normal,Low"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "RequestStatus",
+            "fieldValues": "Pending,Approved,Assigned"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "user",
+            "otherEntityRelationshipName": "request",
+            "relationshipName": "user",
+            "otherEntityField": "firstName",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190605031204",
+    "entityTableName": "request",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

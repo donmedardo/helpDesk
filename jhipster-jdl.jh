@@ -1,0 +1,40 @@
+
+
+
+
+enum Priority  {
+	High,Normal,Low
+}
+
+enum RequestStatus  {
+	Pending,Approved,Assigned
+}
+
+entity Request{
+name String,
+descripcion String,
+created ZonedDateTime,
+priority Priority,
+status RequestStatus,
+}
+
+
+
+
+
+relationship OneToOne {
+    Request{user(firstName)} to User
+}
+
+
+//relationship OneToOne {
+//	ProductPhoto{file(filename)} to File,
+//    Profile{user} to User{profile},
+//}
+
+//relationship OneToMany {
+	
+    
+  //  }
+// Set an angular suffix
+// angularSuffix * with mySuffix

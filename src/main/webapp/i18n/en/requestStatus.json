@@ -1,0 +1,10 @@
+{
+  "edimcaApp": {
+    "RequestStatus": {
+      "null": "",
+      "Pending": "Pending",
+      "Approved": "Approved",
+      "Assigned": "Assigned"
+    }
+  }
+}
