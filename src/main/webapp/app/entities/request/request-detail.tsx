@@ -49,6 +49,22 @@ export class RequestDetail extends React.Component<IRequestDetailProps> {
               <TextFormat value={requestEntity.created} type="date" format={APP_DATE_FORMAT} />
             </dd>
             <dt>
+              <span id="approved">
+                <Translate contentKey="edimcaApp.request.approved">Approved</Translate>
+              </span>
+            </dt>
+            <dd>
+              <TextFormat value={requestEntity.approved} type="date" format={APP_DATE_FORMAT} />
+            </dd>
+            <dt>
+              <span id="assigned">
+                <Translate contentKey="edimcaApp.request.assigned">Assigned</Translate>
+              </span>
+            </dt>
+            <dd>
+              <TextFormat value={requestEntity.assigned} type="date" format={APP_DATE_FORMAT} />
+            </dd>
+            <dt>
               <span id="priority">
                 <Translate contentKey="edimcaApp.request.priority">Priority</Translate>
               </span>

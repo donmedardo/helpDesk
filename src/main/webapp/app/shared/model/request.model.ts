@@ -18,6 +18,8 @@ export interface IRequest {
   name?: string;
   descripcion?: string;
   created?: Moment;
+  approved?: Moment;
+  assigned?: Moment;
   priority?: Priority;
   status?: RequestStatus;
   user?: IUser;

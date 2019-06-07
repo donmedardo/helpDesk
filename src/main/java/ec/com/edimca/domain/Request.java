@@ -38,6 +38,12 @@ public class Request implements Serializable {
     @Column(name = "created")
     private ZonedDateTime created;
 
+    @Column(name = "approved")
+    private ZonedDateTime approved;
+
+    @Column(name = "assigned")
+    private ZonedDateTime assigned;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "priority")
     private Priority priority;
@@ -96,6 +102,32 @@ public class Request implements Serializable {
 
     public void setCreated(ZonedDateTime created) {
         this.created = created;
+    }
+
+    public ZonedDateTime getApproved() {
+        return approved;
+    }
+
+    public Request approved(ZonedDateTime approved) {
+        this.approved = approved;
+        return this;
+    }
+
+    public void setApproved(ZonedDateTime approved) {
+        this.approved = approved;
+    }
+
+    public ZonedDateTime getAssigned() {
+        return assigned;
+    }
+
+    public Request assigned(ZonedDateTime assigned) {
+        this.assigned = assigned;
+        return this;
+    }
+
+    public void setAssigned(ZonedDateTime assigned) {
+        this.assigned = assigned;
     }
 
     public Priority getPriority() {
@@ -165,6 +197,8 @@ public class Request implements Serializable {
             ", name='" + getName() + "'" +
             ", descripcion='" + getDescripcion() + "'" +
             ", created='" + getCreated() + "'" +
+            ", approved='" + getApproved() + "'" +
+            ", assigned='" + getAssigned() + "'" +
             ", priority='" + getPriority() + "'" +
             ", status='" + getStatus() + "'" +
             "}";

@@ -7,7 +7,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { IRequest } from 'app/shared/model/request.model';
 import { IRootState } from 'app/shared/reducers';
-import { getEntity, deleteEntity } from './request.reducer';
+import { getEntity, deleteEntity,updateEntity } from './request.reducer';
+import { convertDateTimeFromServer, convertDateTimeToServer } from 'app/shared/util/date-utils';
+import { object } from 'prop-types';
 
 export interface IRequestDeleteDialogProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
@@ -17,7 +19,17 @@ export class RequestDeleteDialog extends React.Component<IRequestDeleteDialogPro
   }
 
   confirmDelete = event => {
-    this.props.deleteEntity(this.props.requestEntity.id);
+    let date =convertDateTimeToServer(new Date())
+    let values={
+    approved : date,
+    status : "Approved"}
+
+    const { requestEntity } = this.props;
+    const entity = {
+      ...requestEntity,
+      ...values
+    };
+    this.props.updateEntity(entity);
     this.handleClose(event);
   };
 
@@ -45,7 +57,7 @@ export class RequestDeleteDialog extends React.Component<IRequestDeleteDialogPro
           </Button>
           <Button id="jhi-confirm-delete-request" color="danger" onClick={this.confirmDelete}>
             <FontAwesomeIcon icon="trash" />&nbsp;
-            <Translate contentKey="entity.action.delete">Delete</Translate>
+            <Translate contentKey="entity.action.approv">Delete</Translate>
           </Button>
         </ModalFooter>
       </Modal>
@@ -57,7 +69,7 @@ const mapStateToProps = ({ request }: IRootState) => ({
   requestEntity: request.entity
 });
 
-const mapDispatchToProps = { getEntity, deleteEntity };
+const mapDispatchToProps = { getEntity, deleteEntity ,updateEntity};
 
 type StateProps = ReturnType<typeof mapStateToProps>;
 type DispatchProps = typeof mapDispatchToProps;

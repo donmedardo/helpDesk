@@ -18,6 +18,8 @@
       "name": "Name",
       "descripcion": "Descripcion",
       "created": "Created",
+      "approved": "Approved",
+      "assigned": "Assigned",
       "priority": "Priority",
       "status": "Status",
       "user": "User"

@@ -33,6 +33,14 @@
                 <constraints nullable="true" />
             </column>
 
+            <column name="approved" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="assigned" type="datetime">
+                <constraints nullable="true" />
+            </column>
+
             <column name="priority" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
@@ -46,6 +54,8 @@
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="request" columnName="created" columnDataType="datetime"/>
+        <dropDefaultValue tableName="request" columnName="approved" columnDataType="datetime"/>
+        <dropDefaultValue tableName="request" columnName="assigned" columnDataType="datetime"/>
         
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->

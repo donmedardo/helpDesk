@@ -56,6 +56,12 @@ public class RequestResourceIntTest {
     private static final ZonedDateTime DEFAULT_CREATED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_CREATED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
 
+    private static final ZonedDateTime DEFAULT_APPROVED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_APPROVED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
+    private static final ZonedDateTime DEFAULT_ASSIGNED = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
+    private static final ZonedDateTime UPDATED_ASSIGNED = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
     private static final Priority DEFAULT_PRIORITY = Priority.High;
     private static final Priority UPDATED_PRIORITY = Priority.Normal;
 
@@ -107,6 +113,8 @@ public class RequestResourceIntTest {
             .name(DEFAULT_NAME)
             .descripcion(DEFAULT_DESCRIPCION)
             .created(DEFAULT_CREATED)
+            .approved(DEFAULT_APPROVED)
+            .assigned(DEFAULT_ASSIGNED)
             .priority(DEFAULT_PRIORITY)
             .status(DEFAULT_STATUS);
         return request;
@@ -135,6 +143,8 @@ public class RequestResourceIntTest {
         assertThat(testRequest.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testRequest.getDescripcion()).isEqualTo(DEFAULT_DESCRIPCION);
         assertThat(testRequest.getCreated()).isEqualTo(DEFAULT_CREATED);
+        assertThat(testRequest.getApproved()).isEqualTo(DEFAULT_APPROVED);
+        assertThat(testRequest.getAssigned()).isEqualTo(DEFAULT_ASSIGNED);
         assertThat(testRequest.getPriority()).isEqualTo(DEFAULT_PRIORITY);
         assertThat(testRequest.getStatus()).isEqualTo(DEFAULT_STATUS);
     }
@@ -172,6 +182,8 @@ public class RequestResourceIntTest {
             .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
             .andExpect(jsonPath("$.[*].descripcion").value(hasItem(DEFAULT_DESCRIPCION.toString())))
             .andExpect(jsonPath("$.[*].created").value(hasItem(sameInstant(DEFAULT_CREATED))))
+            .andExpect(jsonPath("$.[*].approved").value(hasItem(sameInstant(DEFAULT_APPROVED))))
+            .andExpect(jsonPath("$.[*].assigned").value(hasItem(sameInstant(DEFAULT_ASSIGNED))))
             .andExpect(jsonPath("$.[*].priority").value(hasItem(DEFAULT_PRIORITY.toString())))
             .andExpect(jsonPath("$.[*].status").value(hasItem(DEFAULT_STATUS.toString())));
     }
@@ -190,6 +202,8 @@ public class RequestResourceIntTest {
             .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
             .andExpect(jsonPath("$.descripcion").value(DEFAULT_DESCRIPCION.toString()))
             .andExpect(jsonPath("$.created").value(sameInstant(DEFAULT_CREATED)))
+            .andExpect(jsonPath("$.approved").value(sameInstant(DEFAULT_APPROVED)))
+            .andExpect(jsonPath("$.assigned").value(sameInstant(DEFAULT_ASSIGNED)))
             .andExpect(jsonPath("$.priority").value(DEFAULT_PRIORITY.toString()))
             .andExpect(jsonPath("$.status").value(DEFAULT_STATUS.toString()));
     }
@@ -218,6 +232,8 @@ public class RequestResourceIntTest {
             .name(UPDATED_NAME)
             .descripcion(UPDATED_DESCRIPCION)
             .created(UPDATED_CREATED)
+            .approved(UPDATED_APPROVED)
+            .assigned(UPDATED_ASSIGNED)
             .priority(UPDATED_PRIORITY)
             .status(UPDATED_STATUS);
 
@@ -233,6 +249,8 @@ public class RequestResourceIntTest {
         assertThat(testRequest.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testRequest.getDescripcion()).isEqualTo(UPDATED_DESCRIPCION);
         assertThat(testRequest.getCreated()).isEqualTo(UPDATED_CREATED);
+        assertThat(testRequest.getApproved()).isEqualTo(UPDATED_APPROVED);
+        assertThat(testRequest.getAssigned()).isEqualTo(UPDATED_ASSIGNED);
         assertThat(testRequest.getPriority()).isEqualTo(UPDATED_PRIORITY);
         assertThat(testRequest.getStatus()).isEqualTo(UPDATED_STATUS);
     }

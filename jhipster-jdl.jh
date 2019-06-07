@@ -14,6 +14,8 @@ entity Request{
 name String,
 descripcion String,
 created ZonedDateTime,
+approved ZonedDateTime,
+assigned ZonedDateTime,
 priority Priority,
 status RequestStatus,
 }

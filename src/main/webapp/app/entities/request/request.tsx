@@ -47,6 +47,12 @@ export class Request extends React.Component<IRequestProps> {
                   <Translate contentKey="edimcaApp.request.created">Created</Translate>
                 </th>
                 <th>
+                  <Translate contentKey="edimcaApp.request.approved">Approved</Translate>
+                </th>
+                <th>
+                  <Translate contentKey="edimcaApp.request.assigned">Assigned</Translate>
+                </th>
+                <th>
                   <Translate contentKey="edimcaApp.request.priority">Priority</Translate>
                 </th>
                 <th>
@@ -72,6 +78,12 @@ export class Request extends React.Component<IRequestProps> {
                     <TextFormat type="date" value={request.created} format={APP_DATE_FORMAT} />
                   </td>
                   <td>
+                    <TextFormat type="date" value={request.approved} format={APP_DATE_FORMAT} />
+                  </td>
+                  <td>
+                    <TextFormat type="date" value={request.assigned} format={APP_DATE_FORMAT} />
+                  </td>
+                  <td>
                     <Translate contentKey={`edimcaApp.Priority.${request.priority}`} />
                   </td>
                   <td>
@@ -80,12 +92,12 @@ export class Request extends React.Component<IRequestProps> {
                   <td>{request.user ? request.user.firstName : ''}</td>
                   <td className="text-right">
                     <div className="btn-group flex-btn-group-container">
-                      <Button tag={Link} to={`${match.url}/${request.id}`} color="info" size="sm">
+                      {/* <Button tag={Link} to={`${match.url}/${request.id}`} color="info" size="sm">
                         <FontAwesomeIcon icon="eye" />{' '}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.view">View</Translate>
                         </span>
-                      </Button>
+                      </Button> */}
                       <Button tag={Link} to={`${match.url}/${request.id}/edit`} color="primary" size="sm">
                         <FontAwesomeIcon icon="pencil-alt" />{' '}
                         <span className="d-none d-md-inline">
@@ -93,9 +105,9 @@ export class Request extends React.Component<IRequestProps> {
                         </span>
                       </Button>
                       <Button tag={Link} to={`${match.url}/${request.id}/delete`} color="danger" size="sm">
-                        <FontAwesomeIcon icon="trash" />{' '}
+                        {/* <FontAwesomeIcon icon="accessible" />{' '} */}
                         <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.delete">Delete</Translate>
+                          <Translate contentKey="entity.action.approv">Delete</Translate>
                         </span>
                       </Button>
                     </div>
