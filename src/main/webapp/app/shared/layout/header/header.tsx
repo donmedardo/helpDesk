@@ -39,10 +39,10 @@ export default class Header extends React.Component<IHeaderProps, IHeaderState> 
 
   renderDevRibbon = () =>
     this.props.isInProduction === false ? (
-      <div className="ribbon dev">
-        <a href="">
+      <div >
+        {/* <a href="">
           <Translate contentKey={`global.ribbon.${this.props.ribbonEnv}`} />
-        </a>
+        </a> */}
       </div>
     ) : null;
 
