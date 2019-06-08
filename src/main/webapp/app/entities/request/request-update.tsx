@@ -16,7 +16,7 @@ import { IRequest } from 'app/shared/model/request.model';
 import { convertDateTimeFromServer, convertDateTimeToServer } from 'app/shared/util/date-utils';
 import { mapIdList } from 'app/shared/util/entity-utils';
 
-export interface IRequestUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> { }
+export interface IRequestUpdateProps extends StateProps, DispatchProps, RouteComponentProps<{ id: string }> {}
 
 export interface IRequestUpdateState {
   isNew: boolean;
@@ -52,26 +52,23 @@ export class RequestUpdate extends React.Component<IRequestUpdateProps, IRequest
   }
 
   saveEntity = (event, errors, values) => {
-    
     // values.approved = convertDateTimeToServer(values.approved);
     // values.assigned = convertDateTimeToServer(values.assigned);
-    
+
     const { requestEntity } = this.props;
-    if(requestEntity.id!=null){
-      values.status = "Assigned"
+    if (requestEntity.id != null) {
+      values.status = 'Assigned';
       values.assigned = convertDateTimeToServer(new Date());
-    }else{
-      values.status = "Pending"
+    } else {
+      values.status = 'Pending';
       values.created = convertDateTimeToServer(new Date());
     }
 
     if (errors.length === 0) {
-      
       const entity = {
         ...requestEntity,
         ...values
       };
-
 
       if (this.state.isNew) {
         this.props.createEntity(entity);
@@ -103,47 +100,47 @@ export class RequestUpdate extends React.Component<IRequestUpdateProps, IRequest
             {loading ? (
               <p>Loading...</p>
             ) : (
-                <AvForm model={isNew ? {} : requestEntity} onSubmit={this.saveEntity}>
-                  {!isNew ? (
-                    <AvGroup>
-                      <Label for="id">
-                        <Translate contentKey="global.field.id">ID</Translate>
-                      </Label>
-                      <AvInput id="request-id" type="text" className="form-control" name="id" required readOnly />
-                    </AvGroup>
-
-                  ) : null}
-                  {isNew ? (
-                    <AvGroup>
-                      <Label id="nameLabel" for="name">
-                        <Translate contentKey="edimcaApp.request.name">Name</Translate>
-                      </Label>
-                      <AvField id="request-name" type="text" name="name" />
-                    </AvGroup>) :
-                    (<AvGroup>
-                      <Label id="nameLabel" for="name">
-                        <Translate contentKey="edimcaApp.request.name">Name</Translate>
-                      </Label>
-                      <AvInput id="request-name" type="text" className="form-control" name="name" readOnly />
-                    </AvGroup>)}
-
-                  {isNew ? (
-                    <AvGroup>
-                      <Label id="descripcionLabel" for="descripcion">
-                        <Translate contentKey="edimcaApp.request.descripcion">Descripcion</Translate>
-                      </Label>
-                      <AvField id="request-descripcion" type="textarea" name="descripcion" />
-                    </AvGroup>) : (
-                      <AvGroup>
-                        <Label id="descripcionLabel" for="descripcion">
-                          <Translate contentKey="edimcaApp.request.descripcion">Descripcion</Translate>
-                        </Label>
-                        <AvInput id="request-descripcion" type="textarea" name="descripcion" readOnly />
-                      </AvGroup>
-                    )}
-
-
-                  {requestEntity.id == null && <AvGroup>
+              <AvForm model={isNew ? {} : requestEntity} onSubmit={this.saveEntity}>
+                {!isNew ? (
+                  <AvGroup>
+                    <Label for="id">
+                      <Translate contentKey="global.field.id">ID</Translate>
+                    </Label>
+                    <AvInput id="request-id" type="text" className="form-control" name="id" required readOnly />
+                  </AvGroup>
+                ) : null}
+                {isNew ? (
+                  <AvGroup>
+                    <Label id="nameLabel" for="name">
+                      <Translate contentKey="edimcaApp.request.name">Name</Translate>
+                    </Label>
+                    <AvField id="request-name" type="text" name="name" />
+                  </AvGroup>
+                ) : (
+                  <AvGroup>
+                    <Label id="nameLabel" for="name">
+                      <Translate contentKey="edimcaApp.request.name">Name</Translate>
+                    </Label>
+                    <AvInput id="request-name" type="text" className="form-control" name="name" readOnly />
+                  </AvGroup>
+                )}
+                {isNew ? (
+                  <AvGroup>
+                    <Label id="descripcionLabel" for="descripcion">
+                      <Translate contentKey="edimcaApp.request.descripcion">Descripcion</Translate>
+                    </Label>
+                    <AvField id="request-descripcion" type="textarea" name="descripcion" />
+                  </AvGroup>
+                ) : (
+                  <AvGroup>
+                    <Label id="descripcionLabel" for="descripcion">
+                      <Translate contentKey="edimcaApp.request.descripcion">Descripcion</Translate>
+                    </Label>
+                    <AvInput id="request-descripcion" type="textarea" name="descripcion" readOnly />
+                  </AvGroup>
+                )}
+                {requestEntity.id == null && (
+                  <AvGroup>
                     <Label id="priorityLabel">
                       <Translate contentKey="edimcaApp.request.priority">Priority</Translate>
                     </Label>
@@ -164,9 +161,9 @@ export class RequestUpdate extends React.Component<IRequestUpdateProps, IRequest
                         <Translate contentKey="edimcaApp.Priority.Low" />
                       </option>
                     </AvInput>
-                  </AvGroup>}
-
-                  {/* <AvGroup>
+                  </AvGroup>
+                )}
+                {/* <AvGroup>
                   <Label id="statusLabel">
                     <Translate contentKey="edimcaApp.request.status">Status</Translate>
                   </Label>
@@ -188,7 +185,8 @@ export class RequestUpdate extends React.Component<IRequestUpdateProps, IRequest
                     </option>
                   </AvInput>
                 </AvGroup> */}
-                  {requestEntity.id != null && <AvGroup>
+                {requestEntity.id != null && (
+                  <AvGroup>
                     <Label for="user.firstName">
                       <Translate contentKey="edimcaApp.request.user">User</Translate>
                     </Label>
@@ -196,26 +194,28 @@ export class RequestUpdate extends React.Component<IRequestUpdateProps, IRequest
                       <option value="" key="0" />
                       {users
                         ? users.map(otherEntity => (
-                          <option value={otherEntity.id} key={otherEntity.id}>
-                            {otherEntity.firstName}
-                          </option>
-                        ))
+                            <option value={otherEntity.id} key={otherEntity.id}>
+                              {otherEntity.firstName}
+                            </option>
+                          ))
                         : null}
                     </AvInput>
-                  </AvGroup>}
-                  {/* <Button tag={Link} id="cancel-save" to="/entity/request" replace color="info">
+                  </AvGroup>
+                )}
+                {/* <Button tag={Link} id="cancel-save" to="/entity/request" replace color="info">
                   <FontAwesomeIcon icon="arrow-left" />&nbsp;
                   <span className="d-none d-md-inline">
                     <Translate contentKey="entity.action.back">Back</Translate>
                   </span>
                 </Button> */}
-                  &nbsp;
+                &nbsp;
                 <Button color="primary" id="save-entity" type="submit" disabled={updating}>
-                    <FontAwesomeIcon icon="save" />&nbsp;
+                  <FontAwesomeIcon icon="save" />
+                  &nbsp;
                   <Translate contentKey="entity.action.save">Save</Translate>
-                  </Button>
-                </AvForm>
-              )}
+                </Button>
+              </AvForm>
+            )}
           </Col>
         </Row>
       </div>

@@ -1,6 +1,7 @@
 package ec.com.edimca.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -52,8 +53,8 @@ public class Request implements Serializable {
     @Column(name = "status")
     private RequestStatus status;
 
-    @OneToOne
-    @JoinColumn(unique = true)
+    @ManyToOne
+    @JsonIgnoreProperties("requests")
     private User user;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove

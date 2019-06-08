@@ -16,7 +16,7 @@
     <!--
         Added the entity Request.
     -->
-    <changeSet id="20190605031204-1" author="jhipster">
+    <changeSet id="20190608045207-1" author="jhipster">
         <createTable tableName="request">
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
@@ -48,9 +48,11 @@
             <column name="status" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+
             <column name="user_id" type="bigint">
-                <constraints unique="true" nullable="true" uniqueConstraintName="ux_request_user_id" />
+                <constraints nullable="true" />
             </column>
+
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         <dropDefaultValue tableName="request" columnName="created" columnDataType="datetime"/>
