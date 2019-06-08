@@ -40,7 +40,7 @@ const Routes = () => (
       <PrivateRoute path="/account" component={Account} hasAnyAuthorities={[AUTHORITIES.ADMIN, AUTHORITIES.USER]} />
       {/* <PrivateRoute path="/entity" component={Entities} hasAnyAuthorities={[AUTHORITIES.USER]} /> */}
       <ErrorBoundaryRoute path="/entity" component={Entities} />
-      <ErrorBoundaryRoute path="/" component={Home} />
+      <ErrorBoundaryRoute path="/" component={Requirement} />
     </Switch>
   </div>
 );
