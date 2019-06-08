@@ -98,18 +98,18 @@ export class Request extends React.Component<IRequestProps> {
                           <Translate contentKey="entity.action.view">View</Translate>
                         </span>
                       </Button> */}
-                      <Button tag={Link} to={`${match.url}/${request.id}/edit`} color="primary" size="sm">
+                      {request.status==='Approved' ?<Button tag={Link} to={`${match.url}/${request.id}/edit`} color="primary" size="sm">
                         <FontAwesomeIcon icon="pencil-alt" />{' '}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.edit">Edit</Translate>
                         </span>
-                      </Button>
-                      <Button tag={Link} to={`${match.url}/${request.id}/delete`} color="danger" size="sm">
+                      </Button>:null}
+                      {request.status==='Pending' ? <Button tag={Link} to={`${match.url}/${request.id}/delete`} color="primary" size="sm">
                         {/* <FontAwesomeIcon icon="accessible" />{' '} */}
                         <span className="d-none d-md-inline">
                           <Translate contentKey="entity.action.approv">Delete</Translate>
                         </span>
-                      </Button>
+                      </Button>:null}
                     </div>
                   </td>
                 </tr>

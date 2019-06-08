@@ -56,7 +56,8 @@ export class RequestDeleteDialog extends React.Component<IRequestDeleteDialogPro
             <Translate contentKey="entity.action.cancel">Cancel</Translate>
           </Button>
           <Button id="jhi-confirm-delete-request" color="danger" onClick={this.confirmDelete}>
-            <FontAwesomeIcon icon="trash" />&nbsp;
+            {/* <FontAwesomeIcon icon="trash" /> */}
+            &nbsp;
             <Translate contentKey="entity.action.approv">Delete</Translate>
           </Button>
         </ModalFooter>
