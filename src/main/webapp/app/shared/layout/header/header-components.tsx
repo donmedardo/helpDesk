@@ -29,7 +29,7 @@ export const Brand = props => (
   <NavbarBrand tag={Link} to="/" className="brand-logo">
     <BrandIcon />
     {/* <span className="brand-title"> */}
-      {/* <Translate contentKey="global.title">Edimca</Translate> */}
+    {/* <Translate contentKey="global.title">Edimca</Translate> */}
     {/* </span> */}
     {/* <span className="navbar-version">{appConfig.VERSION}</span> */}
   </NavbarBrand>
@@ -49,9 +49,9 @@ export const Home = props => (
 export const Requirement = props => (
   <NavItem>
     <NavLink tag={Link} to="/entity/request/new" className="d-flex align-items-center">
-      <FontAwesomeIcon icon="home" />
+      {/* <FontAwesomeIcon icon="home" /> */}
       <span>
-      Requirement
+        Requirement
         {/* <Translate contentKey="global.menu.home">Home</Translate> */}
       </span>
     </NavLink>

@@ -77,12 +77,8 @@ export class Request extends React.Component<IRequestProps> {
                   <td>
                     <TextFormat type="date" value={request.created} format={APP_DATE_FORMAT} />
                   </td>
-                  <td>
-                    <TextFormat type="date" value={request.approved} format={APP_DATE_FORMAT} />
-                  </td>
-                  <td>
-                    <TextFormat type="date" value={request.assigned} format={APP_DATE_FORMAT} />
-                  </td>
+                  <td>{request.approved ? <TextFormat type="date" value={request.approved} format={APP_DATE_FORMAT} /> : ''}</td>
+                  <td>{request.assigned ? <TextFormat type="date" value={request.assigned} format={APP_DATE_FORMAT} /> : ''}</td>
                   <td>
                     <Translate contentKey={`edimcaApp.Priority.${request.priority}`} />
                   </td>
