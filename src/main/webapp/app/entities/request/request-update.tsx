@@ -72,14 +72,16 @@ export class RequestUpdate extends React.Component<IRequestUpdateProps, IRequest
 
       if (this.state.isNew) {
         this.props.createEntity(entity);
+        this.props.history.push('/');
       } else {
         this.props.updateEntity(entity);
+        this.props.history.push('/entity/request');
       }
     }
   };
 
   handleClose = () => {
-    this.props.history.push('/entity/request/new');
+    // this.props.history.push('/entity/request');
   };
 
   render() {
