@@ -23,13 +23,13 @@ export class Request extends React.Component<IRequestProps> {
     const { requestList, match } = this.props;
     return (
       <div>
-        <h2 id="request-heading">
+        {/* <h2 id="request-heading">
           <Translate contentKey="edimcaApp.request.home.title">Requests</Translate>
           <Link to={`${match.url}/new`} className="btn btn-primary float-right jh-create-entity" id="jh-create-entity">
             <FontAwesomeIcon icon="plus" />&nbsp;
             <Translate contentKey="edimcaApp.request.home.createLabel">Create new Request</Translate>
           </Link>
-        </h2>
+        </h2> */}
         <div className="table-responsive">
           <Table responsive>
             <thead>
@@ -98,18 +98,22 @@ export class Request extends React.Component<IRequestProps> {
                           <Translate contentKey="entity.action.view">View</Translate>
                         </span>
                       </Button> */}
-                      {request.status==='Approved' ?<Button tag={Link} to={`${match.url}/${request.id}/edit`} color="primary" size="sm">
-                        <FontAwesomeIcon icon="pencil-alt" />{' '}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.edit">Edit</Translate>
-                        </span>
-                      </Button>:null}
-                      {request.status==='Pending' ? <Button tag={Link} to={`${match.url}/${request.id}/delete`} color="primary" size="sm">
-                        {/* <FontAwesomeIcon icon="accessible" />{' '} */}
-                        <span className="d-none d-md-inline">
-                          <Translate contentKey="entity.action.approv">Delete</Translate>
-                        </span>
-                      </Button>:null}
+                      {request.status === 'Approved' ? (
+                        <Button tag={Link} to={`${match.url}/${request.id}/edit`} color="primary" size="sm">
+                          <FontAwesomeIcon icon="pencil-alt" />{' '}
+                          <span className="d-none d-md-inline">
+                            <Translate contentKey="entity.action.edit">Edit</Translate>
+                          </span>
+                        </Button>
+                      ) : null}
+                      {request.status === 'Pending' ? (
+                        <Button tag={Link} to={`${match.url}/${request.id}/delete`} color="primary" size="sm">
+                          {/* <FontAwesomeIcon icon="accessible" />{' '} */}
+                          <span className="d-none d-md-inline">
+                            <Translate contentKey="entity.action.approv">Delete</Translate>
+                          </span>
+                        </Button>
+                      ) : null}
                     </div>
                   </td>
                 </tr>
